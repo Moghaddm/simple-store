@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\MyProjects\\FullCRUD-WebAPi-Test\\CRUD.Api\\CRUD.Api.csproj": {}
+    "F:\\Crud\\CRUD.Api\\CRUD.Api.csproj": {}
   },
   "projects": {
-    "F:\\MyProjects\\FullCRUD-WebAPi-Test\\CRUD.Api\\CRUD.Api.csproj": {
+    "F:\\Crud\\CRUD.Api\\CRUD.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\MyProjects\\FullCRUD-WebAPi-Test\\CRUD.Api\\CRUD.Api.csproj",
+        "projectUniqueName": "F:\\Crud\\CRUD.Api\\CRUD.Api.csproj",
         "projectName": "CRUD.Api",
-        "projectPath": "F:\\MyProjects\\FullCRUD-WebAPi-Test\\CRUD.Api\\CRUD.Api.csproj",
+        "projectPath": "F:\\Crud\\CRUD.Api\\CRUD.Api.csproj",
         "packagesPath": "C:\\Users\\Mohammad\\.nuget\\packages\\",
-        "outputPath": "F:\\MyProjects\\FullCRUD-WebAPi-Test\\CRUD.Api\\obj\\",
+        "outputPath": "F:\\Crud\\CRUD.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Mohammad\\AppData\\Roaming\\NuGet\\NuGet.Config"
