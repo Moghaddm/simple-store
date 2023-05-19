@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 
 namespace Services.Authentication;
-public class UserRoles : IdentityRole
+public class ApplicationRoles : IdentityRole
 {
     public const string admin = "Admin";
-    public const string user = "user";
+    public const string user = "User";
 }

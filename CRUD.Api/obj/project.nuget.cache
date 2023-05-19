@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6l8AsqkIq1Qk+BXWCcxG9uoWDoghMyoiNxYKwjqTsBiaE8A8aMyZanXctOeq5B0JS7Nnildrvdk+ZkFDH2uIVA==",
+  "dgSpecHash": "jcjPIomC/lMVIWVhprawXCYEYfmXfqLxxMzRs8FscblFQJAXZmpqlMGG8k5lJsAdp54yXigOvemXOjpwl1M7Gw==",
   "success": true,
-  "projectFilePath": "F:\\MyProjects\\FullCRUD-WebAPi-Test\\CRUD.Api\\CRUD.Api.csproj",
+  "projectFilePath": "F:\\Crud\\CRUD.Api\\CRUD.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mohammad\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Mohammad\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
