@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jcjPIomC/lMVIWVhprawXCYEYfmXfqLxxMzRs8FscblFQJAXZmpqlMGG8k5lJsAdp54yXigOvemXOjpwl1M7Gw==",
+  "dgSpecHash": "8FfeXaB+re0cc3FoBIXQb/ZU4qo6s2Lm/2515xf9/t6U+BoDvlgBoVdxbGV2VX9ElXysZaHibNXYYm+/lhqRQw==",
   "success": true,
-  "projectFilePath": "F:\\Crud\\CRUD.Api\\CRUD.Api.csproj",
+  "projectFilePath": "F:\\MyProjects\\Store-Auth-EF-CRUD-Test\\CRUD.Api\\CRUD.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mohammad\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Mohammad\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
