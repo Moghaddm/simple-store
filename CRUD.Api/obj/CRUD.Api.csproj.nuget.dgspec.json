@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Crud\\CRUD.Api\\CRUD.Api.csproj": {}
+    "F:\\MyProjects\\Store-Auth-EF-CRUD-Test\\CRUD.Api\\CRUD.Api.csproj": {}
   },
   "projects": {
-    "F:\\Crud\\CRUD.Api\\CRUD.Api.csproj": {
+    "F:\\MyProjects\\Store-Auth-EF-CRUD-Test\\CRUD.Api\\CRUD.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Crud\\CRUD.Api\\CRUD.Api.csproj",
+        "projectUniqueName": "F:\\MyProjects\\Store-Auth-EF-CRUD-Test\\CRUD.Api\\CRUD.Api.csproj",
         "projectName": "CRUD.Api",
-        "projectPath": "F:\\Crud\\CRUD.Api\\CRUD.Api.csproj",
+        "projectPath": "F:\\MyProjects\\Store-Auth-EF-CRUD-Test\\CRUD.Api\\CRUD.Api.csproj",
         "packagesPath": "C:\\Users\\Mohammad\\.nuget\\packages\\",
-        "outputPath": "F:\\Crud\\CRUD.Api\\obj\\",
+        "outputPath": "F:\\MyProjects\\Store-Auth-EF-CRUD-Test\\CRUD.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Mohammad\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Mohammad\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -55,6 +57,12 @@
               "version": "[7.0.5, )"
             },
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.5, )"
             },
