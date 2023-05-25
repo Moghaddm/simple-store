@@ -6,6 +6,7 @@ using DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore;
+using CRUD.Api.Repositories;
 
 namespace CRUD.Api.Controllers;
 
@@ -15,20 +16,25 @@ namespace CRUD.Api.Controllers;
 public class ProductsController : ControllerBase
 {
     private readonly ILogger<ProductsController> _logger;
-    private readonly StoreContext _context;
+    private readonly IProductRepository db;
 
-    public ProductsController(StoreContext context, ILogger<ProductsController> logger) =>
-        (_context, _logger) = (context, logger);
+    public ProductsController(IProductRepository db, ILogger<ProductsController> logger) =>
+        (this.db, _logger) = (db, logger);
+
+    // public ProductsController(IProductRepository db) => this.db = db;
 
     [AllowAnonymous]
     [HttpGet(Name = "GetProducts")]
-    public async Task<ActionResult<List<AddEditProductDTO>>> Get() =>
-        Ok(_context.Products.Select(product => ToDtoMapper.ToProductDtoMap(product)).ToList());
+    public async Task<ActionResult<List<AddEditProductDTO>>> Get()
+    {
+        var products = await db.GetProducts();
+        return Ok(products.Select(product => ToDtoMapper.ToProductDtoMap(product)).ToList());
+    }
 
     [HttpGet("{id}", Name = "GetProduct")]
     public async Task<ActionResult<AddEditProductDTO>> GetById([FromRoute] int id)
     {
-        var product = _context.Products.FirstOrDefault(p => p.Id == id);
+        var product = await db.GetProduct(id);
         if (product is not null)
             return Ok(ToDtoMapper.ToProductDtoMap(product));
         return NotFound("Product Does Not Exist!");
@@ -40,8 +46,7 @@ public class ProductsController : ControllerBase
         if (product is not null)
         {
             _logger.LogInformation("Product {0} is Added To Database!", product!.Name);
-            await _context.Products.AddAsync(ToDtoMapper.ToProductDtoMap(product));
-            await _context.SaveChangesAsync();
+            await db.InsertProduct(ToDtoMapper.ToProductDtoMap(product));
             return Ok($"Product {product!.Name} is Added To Database!");
         }
         return BadRequest("Your Product Is Not Fully Sended !");
@@ -53,7 +58,7 @@ public class ProductsController : ControllerBase
         [FromBody] AddEditProductDTO product
     )
     {
-        if (!(_context.Products.FirstOrDefault(p => p.Id == id) is Product found))
+        if (!(await db.GetProduct(id) is Product found))
             return NotFound($"Product Whit {id} ID Is Not Exist!");
         var newProduct = ToDtoMapper.ToProductDtoMap(product);
         found.Name = newProduct.Name;
@@ -62,7 +67,7 @@ public class ProductsController : ControllerBase
         found.Comments = newProduct.Comments;
         found.Price = newProduct.Price;
         found.Rate = newProduct.Rate;
-        await _context.SaveChangesAsync();
+        await db.UpdateProduct(id,found);
         _logger.LogInformation($"Product {product!.Name} is Up To Date In Database!");
         return Ok("Updated!");
     }
@@ -70,11 +75,10 @@ public class ProductsController : ControllerBase
     [HttpPut("[action]/{id}", Name = "DeleteProduct")]
     public async Task<IActionResult> Delete([FromRoute] int id)
     {
-        if (!(_context.Products.FirstOrDefault(p => p.Id == id) is Product found))
+        if (!(await db.GetProduct(id) is Product found))
             return NotFound($"Product Whit {id} ID Is Not Exist!");
-        _context.Products.Remove(found);
-        await _context.SaveChangesAsync();
-        _logger.LogInformation($"Product {found!.Name} is Up To Date In Database!");
+        await db.DeleteProduct(id);
+        _logger.LogInformation($"Product {found!.Name} is Deleted From Database!");
         return Ok("Deleted!");
     }
 }
