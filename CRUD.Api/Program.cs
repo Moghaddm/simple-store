@@ -6,8 +6,13 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 using Microsoft.AspNetCore.Identity;
+using CRUD.Api.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<StoreContext>();
+
+builder.Services.AddScoped<IProductRepository,ProductRepository>();
 
 builder.Services.AddScoped<JwtService>();
 
@@ -21,8 +26,6 @@ builder.Services
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddDbContext<StoreContext>();
 
 builder.Services
     .AddIdentity<ApplicationUser, ApplicationRoles>(options =>
@@ -61,7 +64,6 @@ builder.Services
     });
 var app = builder.Build();
 
-await app.Services.GetService<StoreContext>()!.Database.EnsureCreatedAsync();
 
 if (app.Environment.IsDevelopment())
 {
