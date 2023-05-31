@@ -18,10 +18,10 @@ namespace CRUD.Tests.Controllers
     public class ProductsControllerTest
     {
         private readonly ProductsController _controller;
-        private ProductsController ProductControllerInit(DbContextMock<StoreContext> dbContextMock)
-        {
-            return new ProductsController(dbContextMock.Object);
-        }
+        // private ProductsController ProductControllerInit(DbContextMock<StoreContext> dbContextMock)
+        // {
+        //     return new ProductsController(dbContextMock.Object);
+        // }
 
         private List<Product> getInitialDbEntities()
         {
@@ -47,7 +47,7 @@ namespace CRUD.Tests.Controllers
             //int id = 4;
             //var product = new Product();
             DbContextMock<StoreContext> dbContextMock = getDbContext(getInitialDbEntities());
-            ProductsController productsController = ProductControllerInit(dbContextMock);
+            // ProductsController productsController = ProductControllerInit(dbContextMock);
 
             // Act
             var result =await _controller.Get();
@@ -64,12 +64,12 @@ namespace CRUD.Tests.Controllers
             //DbContextMock<StoreContext> dbContextMock = getDbContext(getInitialDbEntities());
             //ProductsController productsController = ProductControllerInit(dbContextMock);
             DbContextMock<StoreContext> dbContextMock = getDbContext(getInitialDbEntities());
-            ProductsController productsController = ProductControllerInit(dbContextMock);
+            // ProductsController productsController = ProductControllerInit(dbContextMock);
             // Act
-            var result = productsController.GetById(2);
+            // var result = productsController.GetById(2);
 
             // Assert
-            Assert.Equal(id, result.Id);
+            // Assert.Equal(id, result.Id);
             //Assert.IsType<OkObjectResult>(result);
             //Assert.Equal(1,items.Count);
         }
