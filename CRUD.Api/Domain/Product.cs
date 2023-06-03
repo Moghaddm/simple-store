@@ -8,7 +8,7 @@ public class Product : Entity
     public string Description { get; private set; }
     public int Price { get; private set; }
     public double Rate { get; private set; }
-    public IReadOnlyList<Attachment> Attachments { get; private set; }
+    public List<Attachment> Attachments { get; private set; }
     public IReadOnlyList<Comment> Comments { get; private set; }
 
     public Product(string name, string description, int price)
@@ -26,17 +26,12 @@ public class Product : Entity
             throw new ArgumentException(nameof(alt));
         Attachments.Add(new Attachment(image,alt));
     }
+    public void UpdateAttachments(List<Attachment> attachments)
+         =>  Attachments = attachments;
     public void GiveRate(int rate)
     {
         if (rate < 0)
             throw new ArgumentException(nameof(rate));
         Rate = rate;
-    }
-
-    public void AddComment(Comment comment)
-    {
-        if (comment is null)
-            throw new ArgumentNullException(nameof(comment));
-        Comments.Add(comment);
     }
 }

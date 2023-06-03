@@ -15,13 +15,11 @@ public class ToDtoMapper
             Rate = product.Rate,
             Attachments = product.Attachments
         };
-        public static Product ToProductDtoMap(AddEditProductDTO product) =>
-        new Product()
-        {
-            Name = product.Name,
-            Description = product.Description,
-            Price = product.Price,
-            Rate = product.Rate,
-            Attachments = product.Attachments
-        };
+    public static Product ToProductDtoMap(AddEditProductDTO product)
+    {
+        var newProduct =new Product(product.Name, product.Description, product.Price);
+        newProduct.GiveRate((int)product.Rate);
+        newProduct.UpdateAttachments(product.Attachments);
+        return newProduct;
+    }
 }

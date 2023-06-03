@@ -59,12 +59,9 @@ public class ProductsController : ControllerBase
         if (!(await db.GetProduct(id) is Product found))
             return NotFound($"Product Whit {id} ID Is Not Exist!");
         var newProduct = ToDtoMapper.ToProductDtoMap(product);
-        found.Name = newProduct.Name;
-        found.Description = newProduct.Description;
-        found.Attachments = newProduct.Attachments;
-        found.Comments = newProduct.Comments;
-        found.Price = newProduct.Price;
-        found.Rate = newProduct.Rate;
+        found = new Product(newProduct.Name, newProduct.Description, newProduct.Price);
+        found.GiveRate((int)product.Rate);
+        found.UpdateAttachments(newProduct.Attachments);
         await db.UpdateProduct(id, found);
         _logger.LogInformation($"Product {product!.Name} is Up To Date In Database!");
         return Ok("Updated!");
