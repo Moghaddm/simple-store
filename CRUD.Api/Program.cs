@@ -4,15 +4,21 @@ using Persistence;
 using Services.Authentication;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.AspNetCore.Identity;
 using CRUD.Api.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<StoreContext>();
+var configuration = builder.Configuration;
 
-builder.Services.AddScoped<IProductRepository,ProductRepository>();
+builder.Services.AddDbContext<StoreContext>(options =>
+{
+    options.UseSqlServer(configuration["MSSQL"]);
+});
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 builder.Services.AddScoped<JwtService>();
 
@@ -33,9 +39,8 @@ builder.Services
         options.User.AllowedUserNameCharacters =
             "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
     })
-    .AddEntityFrameworkStores<StoreContext>().AddDefaultTokenProviders();
-
-var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+    .AddEntityFrameworkStores<StoreContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services
     .AddAuthentication(options =>
@@ -63,7 +68,6 @@ builder.Services
             };
     });
 var app = builder.Build();
-
 
 if (app.Environment.IsDevelopment())
 {

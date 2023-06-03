@@ -1,8 +1,6 @@
 namespace CRUD.Api.Domain
 {
-    public class Attachment 
+    public record Attachment(byte[] image,string alt)
     {
-        public byte[] Image { get; set; }
-        public string Alt { get; set; }
     }
 }

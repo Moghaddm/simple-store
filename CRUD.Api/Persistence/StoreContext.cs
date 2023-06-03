@@ -18,42 +18,45 @@ public class StoreContext : IdentityDbContext<ApplicationUser, ApplicationRoles,
     {
         builder.ApplyConfigurationsFromAssembly(typeof(StoreContext).Assembly);
         base.OnModelCreating(builder);
-        
+
+        builder.Entity<ApplicationUser>(entity =>
+        {
+            entity.ToTable("AppUsers");
+        });
+        builder.Entity<ApplicationRoles>(entity =>
+        {
+            entity.ToTable("AppRoles");
+        });
         builder.Entity<IdentityUser>(entity =>
         {
-           entity.ToTable(name: "User");
+            entity.ToTable(name: "User");
         });
         builder.Entity<IdentityRole>(entity =>
         {
-           entity.ToTable(name: "Role");
+            entity.ToTable(name: "Role");
         });
         builder.Entity<IdentityUserRole<string>>(entity =>
         {
-           entity.ToTable("UserRoles");
+            entity.ToTable("UserRoles");
         });
         builder.Entity<IdentityUserClaim<string>>(entity =>
         {
-           entity.ToTable("UserClaims");
+            entity.ToTable("UserClaims");
         });
         builder.Entity<IdentityUserLogin<string>>(entity =>
         {
-           entity.ToTable("UserLogins");
+            entity.ToTable("UserLogins");
         });
         builder.Entity<IdentityRoleClaim<string>>(entity =>
         {
-           entity.ToTable("RoleClaims");
+            entity.ToTable("RoleClaims");
         });
         builder.Entity<IdentityUserToken<string>>(entity =>
         {
-           entity.ToTable("UserTokens");
+            entity.ToTable("UserTokens");
         });
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
-        optionsBuilder.UseSqlServer(
-            new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
-                .Build()
-                .GetConnectionString("MSSQL")
-        );
+        base.OnConfiguring(optionsBuilder);
 }
