@@ -21,8 +21,6 @@ public class ProductsController : ControllerBase
     public ProductsController(IProductRepository db, ILogger<ProductsController> logger) =>
         (this.db, _logger) = (db, logger);
 
-    // public ProductsController(IProductRepository db) => this.db = db;
-
     [AllowAnonymous]
     [HttpGet(Name = "GetProducts")]
     public async Task<ActionResult<List<AddEditProductDTO>>> Get()
@@ -67,7 +65,7 @@ public class ProductsController : ControllerBase
         found.Comments = newProduct.Comments;
         found.Price = newProduct.Price;
         found.Rate = newProduct.Rate;
-        await db.UpdateProduct(id,found);
+        await db.UpdateProduct(id, found);
         _logger.LogInformation($"Product {product!.Name} is Up To Date In Database!");
         return Ok("Updated!");
     }

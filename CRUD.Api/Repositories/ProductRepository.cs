@@ -7,11 +7,14 @@ namespace CRUD.Api.Repositories
     public class ProductRepository : IProductRepository
     {
         private readonly StoreContext _context;
+
+        public ProductRepository(StoreContext context) => _context = context;
+
         public async ValueTask DeleteProduct(int id)
         {
             var product = await _context.Products.FirstOrDefaultAsync(product => product.Id == id);
             if (product is null)
-            throw new ArgumentNullException("Product Not Founded!");
+                throw new ArgumentNullException("Product Not Founded!");
             _context.Products.Remove(product!);
             await _context.SaveChangesAsync();
         }
@@ -20,13 +23,12 @@ namespace CRUD.Api.Repositories
         {
             var product = await _context.Products.FirstOrDefaultAsync(product => product.Id == id);
             if (product is not null)
-            return product!;
+                return product!;
             throw null;
         }
 
         public async ValueTask<List<Product>> GetProducts()
         {
-            // var products
             return await _context.Products.ToListAsync();
         }
 
@@ -38,10 +40,12 @@ namespace CRUD.Api.Repositories
 
         public async ValueTask UpdateProduct(int id, Product product)
         {
-            var updateProduct =await _context.Products.FirstOrDefaultAsync(product => product.Id == id);
-            updateProduct!.Name= product.Name;
-            updateProduct.Description= product.Description;
-            updateProduct.Price= product.Price;
+            var updateProduct = await _context.Products.FirstOrDefaultAsync(
+                product => product.Id == id
+            );
+            updateProduct!.Name = product.Name;
+            updateProduct.Description = product.Description;
+            updateProduct.Price = product.Price;
             updateProduct.Rate = product.Rate;
             updateProduct.Attachments = product.Attachments;
             _context.Products.Update(updateProduct);
