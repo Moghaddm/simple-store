@@ -43,11 +43,9 @@ namespace CRUD.Api.Repositories
             var updateProduct = await _context.Products.FirstOrDefaultAsync(
                 product => product.Id == id
             );
-            updateProduct!.Name = product.Name;
-            updateProduct.Description = product.Description;
-            updateProduct.Price = product.Price;
-            updateProduct.Rate = product.Rate;
-            updateProduct.Attachments = product.Attachments;
+            updateProduct = new Product(product.Name,product.Description,product.Price);
+            updateProduct.GiveRate((int)product.Rate);
+            updateProduct.UpdateAttachments(product.Attachments);
             _context.Products.Update(updateProduct);
             await _context.SaveChangesAsync();
         }
