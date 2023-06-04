@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9lqrP+fxxjEkJceHBcHrm1aGpZxxsf060wlA1IF6XyGPw/8nlT4s0mfnNMvKkt4l4oQhQ6uVbb4BIUBAc9/dyQ==",
+  "dgSpecHash": "Gj+xjvXQMOM7gva+RobTV2V+ndb/vm3+NYWpekKB4Tj1Ow+MkMC7h2xeBjsheTK7S2W4NspADnX94vqPwm7lnw==",
   "success": true,
   "projectFilePath": "F:\\MyProjects\\Store-Auth-EF-CRUD-Test\\CRUD.Tests\\CRUD.Tests.csproj",
   "expectedPackageFiles": [
@@ -25,6 +25,7 @@
     "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.5\\microsoft.entityframeworkcore.7.0.5.nupkg.sha512",
     "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.5\\microsoft.entityframeworkcore.abstractions.7.0.5.nupkg.sha512",
     "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.5\\microsoft.entityframeworkcore.analyzers.7.0.5.nupkg.sha512",
+    "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\7.0.5\\microsoft.entityframeworkcore.inmemory.7.0.5.nupkg.sha512",
     "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.5\\microsoft.entityframeworkcore.relational.7.0.5.nupkg.sha512",
     "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.5\\microsoft.entityframeworkcore.sqlserver.7.0.5.nupkg.sha512",
     "C:\\Users\\Mohammad\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",

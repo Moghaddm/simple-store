@@ -26,6 +26,7 @@ public class ProductsController : ControllerBase
     public async Task<ActionResult<List<AddEditProductDTO>>> Get()
     {
         var products = await db.GetProducts();
+
         return Ok(products.Select(product => ToDtoMapper.ToProductDtoMap(product)).ToList());
     }
 
@@ -33,8 +34,10 @@ public class ProductsController : ControllerBase
     public async Task<ActionResult<AddEditProductDTO>> GetById([FromRoute] int id)
     {
         var product = await db.GetProduct(id);
+
         if (product is not null)
             return Ok(ToDtoMapper.ToProductDtoMap(product));
+
         return NotFound("Product Does Not Exist!");
     }
 
@@ -44,6 +47,7 @@ public class ProductsController : ControllerBase
         if (product is not null)
         {
             _logger.LogInformation("Product {0} is Added To Database!", product!.Name);
+
             await db.InsertProduct(ToDtoMapper.ToProductDtoMap(product));
             return Ok($"Product {product!.Name} is Added To Database!");
         }
@@ -57,22 +61,28 @@ public class ProductsController : ControllerBase
     )
     {
         if (!(await db.GetProduct(id) is Product found))
-            return NotFound($"Product Whit {id} ID Is Not Exist!");
+            return NotFound($"Product With {id} Id Does Not Exist!");
+
         var newProduct = ToDtoMapper.ToProductDtoMap(product);
+
         found = new Product(newProduct.Name, newProduct.Description, newProduct.Price);
         found.GiveRate((int)product.Rate);
         found.UpdateAttachments(newProduct.Attachments);
+
         await db.UpdateProduct(id, found);
+
         _logger.LogInformation($"Product {product!.Name} is Up To Date In Database!");
         return Ok("Updated!");
     }
 
-    [HttpPut("[action]/{id}", Name = "DeleteProduct")]
+    [HttpDelete("[action]/{id}", Name = "DeleteProduct")]
     public async Task<IActionResult> Delete([FromRoute] int id)
     {
         if (!(await db.GetProduct(id) is Product found))
-            return NotFound($"Product Whit {id} ID Is Not Exist!");
+            return NotFound($"Product With {id} Id Does Not Exist!");
+
         await db.DeleteProduct(id);
+
         _logger.LogInformation($"Product {found!.Name} is Deleted From Database!");
         return Ok("Deleted!");
     }
