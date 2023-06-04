@@ -326,3 +326,4 @@ F:\MyProjects\Store-Auth-EF-CRUD-Test\CRUD.Tests\obj\Debug\net7.0\refint\CRUD.Te
 F:\MyProjects\Store-Auth-EF-CRUD-Test\CRUD.Tests\obj\Debug\net7.0\CRUD.Tests.pdb
 F:\MyProjects\Store-Auth-EF-CRUD-Test\CRUD.Tests\obj\Debug\net7.0\CRUD.Tests.genruntimeconfig.cache
 F:\MyProjects\Store-Auth-EF-CRUD-Test\CRUD.Tests\obj\Debug\net7.0\ref\CRUD.Tests.dll
+F:\MyProjects\Store-Auth-EF-CRUD-Test\CRUD.Tests\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.InMemory.dll

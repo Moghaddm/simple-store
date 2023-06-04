@@ -19,18 +19,11 @@ namespace CRUD.Api.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async ValueTask<Product> GetProduct(int id)
-        {
-            var product = await _context.Products.FirstOrDefaultAsync(product => product.Id == id);
-            if (product is not null)
-                return product!;
-            throw null;
-        }
+        public async ValueTask<Product> GetProduct(int id) =>
+            await _context.Products.FirstOrDefaultAsync(product => product.Id == id);
 
-        public async ValueTask<List<Product>> GetProducts()
-        {
-            return await _context.Products.ToListAsync();
-        }
+        public async ValueTask<List<Product>> GetProducts() =>
+            await _context.Products.ToListAsync();
 
         public async ValueTask InsertProduct(Product product)
         {
@@ -43,10 +36,12 @@ namespace CRUD.Api.Repositories
             var updateProduct = await _context.Products.FirstOrDefaultAsync(
                 product => product.Id == id
             );
-            updateProduct = new Product(product.Name,product.Description,product.Price);
+            updateProduct!.SetName(product.Name);
+            updateProduct.SetDescription(product.Description);
+            updateProduct.SetPrice(product.Price);
             updateProduct.GiveRate((int)product.Rate);
             updateProduct.UpdateAttachments(product.Attachments);
-            _context.Products.Update(updateProduct);
+            _context.Entry(updateProduct).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
     }

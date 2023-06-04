@@ -18,16 +18,38 @@ public class Product : Entity
         Price = price;
     }
 
-    public void AddAttachment(Byte[] image,string alt)
+    public void SetName(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+            throw new ArgumentNullException(nameof(name));
+        Name = name;
+    }
+
+    public void SetDescription(string description)
+    {
+        if (string.IsNullOrWhiteSpace(description))
+            throw new ArgumentNullException(nameof(description));
+        Description = description;
+    }
+
+    public void SetPrice(int price)
+    {
+        if (price < 0)
+            throw new ArgumentException(nameof(price));
+        Price = price;
+    }
+
+    public void AddAttachment(Byte[] image, string alt)
     {
         if (image is null)
             throw new ArgumentNullException(nameof(image));
         else if (string.IsNullOrWhiteSpace(alt))
             throw new ArgumentException(nameof(alt));
-        Attachments.Add(new Attachment(image,alt));
+        Attachments.Add(new Attachment(image, alt));
     }
-    public void UpdateAttachments(List<Attachment> attachments)
-         =>  Attachments = attachments;
+
+    public void UpdateAttachments(List<Attachment> attachments) => Attachments = attachments;
+
     public void GiveRate(int rate)
     {
         if (rate < 0)
