@@ -1,0 +1,6 @@
+F:\MyProjects\Store-Auth-EF-CRUD-Test\Store.Tests\bin\Debug\net7.0\CoverletSourceRootsMapping
+F:\MyProjects\Store-Auth-EF-CRUD-Test\Store.Tests\obj\Debug\net7.0\Store.Tests.csproj.AssemblyReference.cache
+F:\MyProjects\Store-Auth-EF-CRUD-Test\Store.Tests\obj\Debug\net7.0\Store.Tests.GeneratedMSBuildEditorConfig.editorconfig
+F:\MyProjects\Store-Auth-EF-CRUD-Test\Store.Tests\obj\Debug\net7.0\Store.Tests.AssemblyInfoInputs.cache
+F:\MyProjects\Store-Auth-EF-CRUD-Test\Store.Tests\obj\Debug\net7.0\Store.Tests.AssemblyInfo.cs
+F:\MyProjects\Store-Auth-EF-CRUD-Test\Store.Tests\obj\Debug\net7.0\Store.Tests.csproj.CoreCompileInputs.cache
